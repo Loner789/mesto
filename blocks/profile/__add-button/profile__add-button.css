@@ -12,13 +12,13 @@
     border-radius: 2px;
     outline: none;
     cursor: pointer;
-    justify-self: flex-end;
+    margin-left: auto;
 }
 
 @media screen and (max-width: 767px) {
     .profile__add-button {
         justify-self: center;
         width: 282px;
-
+        margin-right: auto;
     }
 }
