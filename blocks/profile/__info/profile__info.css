@@ -1,0 +1,10 @@
+.profile__info {
+/* Переделать!!! */
+ display: grid;
+ grid-template-columns: min-content 1fr;
+ grid-template-areas: 
+ "title button"
+ "subtitle subtitle";
+ column-gap: 18px;
+ row-gap: 14px;
+}
