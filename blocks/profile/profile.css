@@ -1,9 +1,8 @@
 .profile {
-    max-width: 880px;
-    margin: 0 auto;
-    padding-top: 40px;
+    max-width: 100%;
+    padding: 0;
     display: grid;
-    grid-template-columns: 120px 1fr 150px;
+    grid-template-columns: 120px max-content 1fr;
     column-gap: 30px;
     align-items: center;
 }
