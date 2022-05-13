@@ -11,23 +11,23 @@
 
 <body>
     <div class="page">
-        <header class="header mesto__header">
+        <header class="header header_place_mesto">
             <a href="https://wikiway.com/russia/" target="_blank"><img src="/images/icon_logo-white.svg"
-                    alt="логотип_россия" class="logo"></a>
+                    alt="логотип_россия" class="logo logo_place_header"></a>
         </header>
         <main class="content">
-            <section class="profile mesto__profile">
+            <section class="profile profile_place_mesto">
                 <img src="/images/image_kusto.jpg" alt="аватар_кусто" class="profile__avatar">
                 <div class="profile__info">
-
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button"></button>
+                    <div class="profile__info-wrapper">
+                        <h1 class="profile__title">Жак-Ив КустоЖак-Ив КустоЖак-Ив Кусто</h1>
+                        <button class="profile__edit-button"></button>
+                    </div>
                     <p class="profile__subtitle">Исследователь океана</p>
-
                 </div>
                 <button class="profile__add-button"></button>
             </section>
-            <section class="places mesto__places" aria-label="Блок_с_фото_мест">
+            <section class="places places_place_mesto" aria-label="Блок_с_фото_мест">
                 <figure class="place">
                     <img src="/images/photo_karachaevsk.jpg" alt="фото_карачаевск" class="place__image">
                     <figcaption class="place__caption">
@@ -72,7 +72,7 @@
                 </figure>
             </section>
         </main>
-        <footer class="footer mesto__footer">
+        <footer class="footer footer_place_mesto">
             <p class="footer__copyright" lang="en">&copy;&nbsp;2022 Mesto Russia</p>
         </footer>
     </div>

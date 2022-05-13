@@ -12,5 +12,13 @@
     border-radius: 2px;
     outline: none;
     cursor: pointer;
-    justify-self: end;
+    justify-self: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__add-button {
+        justify-self: center;
+        width: 282px;
+
+    }
 }

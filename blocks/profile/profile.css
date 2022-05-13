@@ -1,8 +1,19 @@
 .profile {
     max-width: 100%;
     padding: 0;
-    display: grid;
-    grid-template-columns: 120px max-content 1fr;
-    column-gap: 30px;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    /* display: grid;
+    grid-template-columns: 120px 1fr 150px;
+    column-gap: 30px; */
     align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        /* grid-template-columns: 1fr; */
+        justify-items: center;
+        font-size: 14px;
+        line-height: 17px;
+    }
 }

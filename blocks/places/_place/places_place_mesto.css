@@ -1,0 +1,9 @@
+.places_place_mesto {
+    margin-top: 51px;
+}
+
+@media screen and (max-width: 1023px) {
+    .places_place_mesto {
+        margin: 39px 19px 0;
+    }
+}

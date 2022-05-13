@@ -1,3 +1,15 @@
 .profile__info {
-    max-width: 880px;
+    max-width: calc(100% - 150px - 120px - 78px);
+    /* max-width: 336px; */
+    /* position: relative; */
+}
+
+@media screen and (max-width: 767px) {
+    .profile__info {
+        /* max-width: 282px; */
+        /* Для абсолютного позиционирования кнопки*
+        padding-top: 26px;
+        padding-bottom: 36px; */
+        margin: 26px 0 36px;
+    }
 }

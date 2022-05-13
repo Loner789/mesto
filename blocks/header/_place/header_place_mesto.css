@@ -1,0 +1,9 @@
+.header_place_mesto {
+    margin-top: 45px;
+}
+
+@media screen and (max-width: 767px) {
+    .header_place_mesto {
+        margin-top: 28px;
+    }
+}

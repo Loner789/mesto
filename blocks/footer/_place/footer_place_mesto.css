@@ -1,0 +1,10 @@
+.footer_place_mesto {
+    margin-top: 66px;
+    margin-bottom: 60px;
+}
+
+@media screen and (max-width: 1023px) {
+    .footer_place_mesto {
+        margin: 48px 19px 36px;
+    }
+}

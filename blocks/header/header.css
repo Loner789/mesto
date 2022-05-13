@@ -1,9 +1,16 @@
 .header {
     max-width: 100%;
     min-height: 74px;
+    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: flex-start;
     align-items: start;
     border-bottom: 1px solid #545454;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        min-height: 56px;
+    }
 }
