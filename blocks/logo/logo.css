@@ -1,6 +1,11 @@
 .logo {
     width: 142px;
     height: 33px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo:hover {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 767px) {

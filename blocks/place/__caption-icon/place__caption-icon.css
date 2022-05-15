@@ -2,4 +2,20 @@
     width: 22px;
     height: 19px;
     cursor: pointer;
+    background-image: url(../../../images/icon_like-disabled.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.place__caption-icon:hover {
+    opacity: 0.5;
+}
+
+.place__caption-icon:active {
+    background-image: url(../../../images/icon_like-active.svg);
+    opacity: 1;
 }

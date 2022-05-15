@@ -11,6 +11,11 @@
     right: -8px;
     transform: translate(100%, -100%);
     cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup__container-discard:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {
