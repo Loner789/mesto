@@ -10,15 +10,6 @@
 </head>
 
 <body>
-    <div class="popup">
-        <form action="#" class="popup__container">
-            <h2 class="popup__container-title">Редактировать профиль</h2>
-            <input type="text" class="popup__container-name" value="Жак-Ив Кусто">
-            <input type="text" class="popup__container-job" value="Исследователь океана">
-            <button type="submit" class="popup__container-submit">Сохранить</button>
-            <button type="reset" class="popup__container-discard"></button>
-        </form>
-    </div>
     <div class="page">
         <header class="header header_place_mesto">
             <a href="https://wikiway.com/russia/" target="_blank"><img src="images/icon_logo-white.svg"
@@ -30,18 +21,18 @@
                 <div class="profile__info">
                     <div class="profile__info-wrapper">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button"></button>
+                        <button type="button" class="profile__edit-button"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button class="profile__add-button"></button>
+                <button type="button" class="profile__add-button"></button>
             </section>
             <section class="places places_place_mesto" aria-label="Блок_с_фото_мест">
                 <figure class="place">
                     <img src="images/photo_karachaevsk.jpg" alt="фото_карачаевск" class="place__image">
                     <figcaption class="place__caption">
                         <p class="place__caption-title">Карачаевск</p>
-                        <button class="place__caption-icon"></button>
+                        <button type="button" class="place__caption-icon"></button>
                     </figcaption>
                 </figure>
                 <figure class="place">
@@ -84,6 +75,15 @@
         <footer class="footer footer_place_mesto">
             <p class="footer__copyright" lang="en">&copy;&nbsp;2022 Mesto Russia</p>
         </footer>
+        <div class="popup">
+            <form action="#" class="popup__container" name="edit-profile-form">
+                <h2 class="popup__container-title">Редактировать профиль</h2>
+                <input type="text" class="popup__container-name" name="profile-name">
+                <input type="text" class="popup__container-job" name="profile-job">
+                <button type="submit" class="popup__container-submit">Сохранить</button>
+                <button type="reset" class="popup__container-discard"></button>
+            </form>
+        </div>
     </div>
     <script src="scripts/index.js"></script>
 </body>

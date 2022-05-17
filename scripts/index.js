@@ -1,28 +1,28 @@
-let formElement = document.querySelector(".popup");
-let nameInput = formElement.querySelector(".popup__container-name");
-let jobInput = formElement.querySelector(".popup__container-job");
-let editButton = document.querySelector(".profile__edit-button");
-let discardButton = document.querySelector('.popup__container-discard');
+const formElement = document.querySelector(".popup");
+const nameInput = formElement.querySelector(".popup__container-name");
+const jobInput = formElement.querySelector(".popup__container-job");
+const editButton = document.querySelector(".profile__edit-button");
+const discardButton = document.querySelector('.popup__container-discard');
+const profileName = document.querySelector(".profile__title");
+const profileJob = document.querySelector(".profile__subtitle");
 
 function popupOpen() {
   formElement.classList.add("popup_opened");
+  nameInput.value = "Жак-Ив Кусто";
+  jobInput.value = "Исследователь океана";
 }
-
-editButton.addEventListener("click", popupOpen);
 
 function popupClose() {
     formElement.classList.remove("popup_opened");
 }
 
-discardButton.addEventListener("click", popupClose);
-
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы.
-  let profileName = document.querySelector(".profile__title");//Можно было записать в одну строку
-  let profileJob = document.querySelector(".profile__subtitle");
-  profileName.textContent = `${nameInput.value}`;// Вставляем новые значения
-  profileJob.textContent = `${jobInput.value}`;// Вставляем новые значения
+  profileName.textContent = nameInput.value;// Вставляем новые значения
+  profileJob.textContent = jobInput.value;// Вставляем новые значения
   popupClose();
 }
 
+editButton.addEventListener("click", popupOpen);
+discardButton.addEventListener("click", popupClose);
 formElement.addEventListener("submit", formSubmitHandler);
