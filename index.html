@@ -21,18 +21,19 @@
                 <div class="profile__info">
                     <div class="profile__info-wrapper">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__edit-button"></button>
+                        <button type="button" class="profile__edit-button"
+                            aria-label="редактировать_профиль"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__add-button"></button>
+                <button type="button" class="profile__add-button" aria-label="добавить_фото"></button>
             </section>
             <section class="places places_place_mesto" aria-label="Блок_с_фото_мест">
                 <figure class="place">
                     <img src="images/photo_karachaevsk.jpg" alt="фото_карачаевск" class="place__image">
                     <figcaption class="place__caption">
                         <p class="place__caption-title">Карачаевск</p>
-                        <button type="button" class="place__caption-icon"></button>
+                        <button type="button" class="place__caption-icon" aria-label="поставить_лайк"></button>
                     </figcaption>
                 </figure>
                 <figure class="place">
@@ -81,7 +82,7 @@
                 <input type="text" class="popup__container-name" name="profile-name">
                 <input type="text" class="popup__container-job" name="profile-job">
                 <button type="submit" class="popup__container-submit">Сохранить</button>
-                <button type="reset" class="popup__container-discard"></button>
+                <button type="reset" class="popup__container-discard" aria-label="закрыть_окно"></button>
             </form>
         </div>
     </div>
