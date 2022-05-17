@@ -1,6 +1,7 @@
 .place__caption-icon {
     width: 22px;
     height: 19px;
+    padding: 0;
     cursor: pointer;
     background-image: url(../../../images/icon_like-disabled.svg);
     background-size: contain;
