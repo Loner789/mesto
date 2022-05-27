@@ -1,4 +1,4 @@
-.place__caption-icon {
+.place__like-button {
     width: 22px;
     height: 19px;
     padding: 0;
@@ -12,11 +12,11 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.place__caption-icon:hover {
+.place__like-button:hover {
     opacity: 0.5;
 }
 
-.place__caption-icon:active {
+.place__like-button:active {
     background-image: url(../../../images/icon_like-active.svg);
     opacity: 1;
 }
