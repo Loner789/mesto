@@ -51,6 +51,11 @@ const initialCards = [
   }
 ];
 
+// Добавляем карточки «из коробки» при загрузке страницы
+initialCards.forEach(function (item) {
+  addCard(item.name, item.link);
+});
+
 // Открытие Profile-popup
 function profilePopupOpen() {
   profileFormElement.classList.add('popup_opened');
@@ -83,19 +88,41 @@ function imagePopupClose() {
   imagePopup.classList.remove('popup_opened');
 }
 
-// Поведение кнопки Profile-popup
+// Поведение кнопки подтверждения Profile-popup
 function profileFormSubmitHandler(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы
   profileName.textContent = nameInput.value;// Вставляем новое значение имени
   profileJob.textContent = jobInput.value;// Вставляем новое значение профессии
   profilePopupClose();
 }
-// Повведение кнопки Card-popup
+
+// Поведение кнопки подтверждения Card-popup
 function cardFormSubmitHandler(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы
   addCard(cardTitle.value, cardLink.value);
   cardPopupClose();
   }
+
+  // Добавление новой карточки
+function addCard(title, link) {
+  const cardTemplate = document.querySelector('#card-template').content; // Шаблон карточки
+  const cardElement = cardTemplate.querySelector('.place').cloneNode(true); // Карточка
+  cardElement.querySelector('.place__image').src = link; // Адрес картинки
+  cardElement.querySelector('.place__image').alt = 'фото_' + title.toLowerCase().split(' ').join('_'); // Описание картинки
+  cardElement.querySelector('.place__caption-title').textContent = title; // Подпись картинки
+  cardElement.querySelector('.place__like-button').addEventListener('click', function (evt) {
+  evt.target.classList.toggle('place__like-button_active'); // Активация-деактивация лайка
+  });
+  cardElement.querySelector('.place__delete-button').addEventListener('click', function (evt) {
+  evt.target.parentElement.remove(); // Удаление карточки
+  });
+  cardElement.querySelector('.place__image-button').addEventListener('click', function (evt) {
+    popupImage.src = evt.target.src; // Картинка Image-popup
+    popupCaption.textContent = evt.target.alt; // Подпись Image-popup
+    imagePopupOpen();
+  });
+  cardsContainer.prepend(cardElement); // Добавление карточки в начало секции "places"
+}
 
 // Слушатели событий
 editButton.addEventListener('click', profilePopupOpen); // Кнопка открытия Profile-popup 
@@ -107,29 +134,3 @@ imagePopupDiscardButton.addEventListener('click', imagePopupClose); // Кноп�
 
 profileFormElement.addEventListener('submit', profileFormSubmitHandler); // Кнопка подтверждения Profile-popup
 cardFormElement.addEventListener('submit', cardFormSubmitHandler); // Кнопка подтверждения Card-popup
-
-// Добавление новой карточки
-function addCard(title, link) {
-  const cardTemplate = document.querySelector('#card-template').content; // Шаблон карточки
-  const cardElement = cardTemplate.querySelector('.place').cloneNode(true); // Карточка
-  cardElement.querySelector('.place__image').src = link; // Адрес картинки
-  cardElement.querySelector('.place__image').alt = 'фото_' + title.toLowerCase().split(' ').join('_'); // Описание картинки
-  cardElement.querySelector('.place__caption-title').textContent = title; // Подпись картинки
-  cardElement.querySelector('.place__like-button').addEventListener('click', function (evt) {
-  evt.target.classList.toggle('place__like-button_active'); // Активация-деактивация лайка
-  });
-  cardElement.querySelector('.place__delete-button').addEventListener('click', function (evt) {
-  evt.target.parentElement.remove();
-  });
-  cardElement.querySelector('.place__image-button').addEventListener('click', function (evt) {
-    popupImage.src = evt.target.src;
-    popupCaption.textContent = evt.target.alt;
-    imagePopupOpen();
-  });
-  cardsContainer.prepend(cardElement); // Добавление карточки в начало секции "places"
-}
-
-// Добавляем карточки «из коробки» при загрузке страницы
-initialCards.forEach(function (item) {
-  addCard(item.name, item.link);
-});
