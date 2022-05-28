@@ -1,14 +1,19 @@
 const profileFormElement = document.querySelector('#edit_profile_popup'); // Profile-popup
 const cardFormElement = document.querySelector('#add_card_popup'); // Card-popup
+const imagePopup = document.querySelector('#image_popup'); // Image-popup
 
 const nameInput = profileFormElement.querySelector('#profile-name'); // Поле ввода имени
 const jobInput = profileFormElement.querySelector('#profile-job'); // Поле ввода профессии
+
+const popupImage = document.querySelector('.popup__image'); // Картинка Image-popup
+const popupCaption = document.querySelector('.popup__image-caption'); // Подпись Image-popup
 
 const editButton = document.querySelector('.profile__edit-button'); // Кнопка открытия Profile-button
 const addButton = document.querySelector('.profile__add-button'); // Кнопка открытия Card-button
 
 const profileFormDiscardButton = document.querySelector('#profile-form-reset-button'); // Кнопка закрытия Profile-popup
 const cardFormDiscardButton = document.querySelector('#card-form-reset-button'); // Кнопка закрытия Card-popup
+const imagePopupDiscardButton = document.querySelector('#image-popup-discard-button'); // Кнопка закрытия Image-popup
 
 const profileName = document.querySelector('.profile__title'); // Имя профиля
 const profileJob = document.querySelector('.profile__subtitle'); // Профессия в профиле
@@ -52,19 +57,32 @@ function profilePopupOpen() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
+
 // Открытие Card-popup
 function cardPopupOpen() {
   cardFormElement.classList.add('popup_opened');
+}
+
+// Открытие Image-popup
+function imagePopupOpen() {
+  imagePopup.classList.add('popup_opened');
 }
 
 // Закрытие Profile-popup
 function profilePopupClose() {
    profileFormElement.classList.remove('popup_opened');
  }
+
 // Закрытие Card-popup
  function cardPopupClose() {
    cardFormElement.classList.remove('popup_opened');
  }
+
+// Закрытие Image-popup
+function imagePopupClose() {
+  imagePopup.classList.remove('popup_opened');
+}
+
 // Поведение кнопки Profile-popup
 function profileFormSubmitHandler(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы
@@ -85,6 +103,7 @@ addButton.addEventListener('click', cardPopupOpen); // Кнопка открыт
 
 profileFormDiscardButton.addEventListener('click', profilePopupClose); // Кнопка закрытия Profile-popup
 cardFormDiscardButton.addEventListener('click', cardPopupClose); // Кнопка закрытия Card-popup
+imagePopupDiscardButton.addEventListener('click', imagePopupClose); // Кнопка закрытия Image-popup
 
 profileFormElement.addEventListener('submit', profileFormSubmitHandler); // Кнопка подтверждения Profile-popup
 cardFormElement.addEventListener('submit', cardFormSubmitHandler); // Кнопка подтверждения Card-popup
@@ -101,6 +120,11 @@ function addCard(title, link) {
   });
   cardElement.querySelector('.place__delete-button').addEventListener('click', function (evt) {
   evt.target.parentElement.remove();
+  });
+  cardElement.querySelector('.place__image-button').addEventListener('click', function (evt) {
+    popupImage.src = evt.target.src;
+    popupCaption.textContent = evt.target.alt;
+    imagePopupOpen();
   });
   cardsContainer.prepend(cardElement); // Добавление карточки в начало секции "places"
 }

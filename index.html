@@ -41,34 +41,39 @@
                 <input type="text" class="popup__container-input" name="profile-job" id="profile-job"
                     placeholder="Профессия">
                 <button type="submit" class="popup__container-submit">Сохранить</button>
-                <button type="reset" class="popup__container-discard" id="profile-form-reset-button" aria-label="закрыть_окно"></button>
+                <button type="reset" class="popup__container-discard" id="profile-form-reset-button"
+                    aria-label="закрыть_окно"></button>
             </form>
         </div>
         <div class="popup" id="add_card_popup">
             <form action="#" class="popup__container" name="add-card-form">
                 <h2 class="popup__container-title">Новое место</h2>
-                <input type="text" class="popup__container-input" name="card-name" id="card-name"
-                    placeholder="Название" required>
+                <input type="text" class="popup__container-input" name="card-name" id="card-name" placeholder="Название"
+                    required>
                 <input type="url" class="popup__container-input" name="card-link" id="card-link"
                     placeholder="Ссылка на картинку" required>
                 <button type="submit" class="popup__container-submit">Создать</button>
-                <button type="reset" class="popup__container-discard" id="card-form-reset-button" aria-label="закрыть_окно"></button>
+                <button type="reset" class="popup__container-discard" id="card-form-reset-button"
+                    aria-label="закрыть_окно"></button>
             </form>
         </div>
-        <!-- <div class="popup" id="image_popup">
+        <div class="popup" id="image_popup">
             <figure class="popup__figure">
                 <img src="#" alt="фото" class="popup__image">
-                <figcaption></figcaption>
-                <button type="reset" class="popup__container-discard" id="card-form-reset-button" aria-label="закрыть_окно"></button>
+                <figcaption class="popup__image-caption"></figcaption>
+                <button type="reset" class="popup__container-discard" id="image-popup-discard-button"
+                    aria-label="закрыть_окно"></button>
             </figure>
-        </div> -->
+        </div>
     </div>
 
     <template id="card-template">
         <article class="place">
-            <img src="#" alt="новое_фото" class="place__image">
+            <button type="button" class="place__image-button">
+            <img src="#" alt="фото" class="place__image">
+            </button>
             <div class="place__caption">
-                <p class="place__caption-title">Карелия</p>
+                <p class="place__caption-title"></p>
                 <button type="button" class="place__like-button" aria-label="поставить_лайк"></button>
             </div>
             <button type="button" class="place__delete-button" aria-label="удалить_карточку"></button>

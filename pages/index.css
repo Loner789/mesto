@@ -23,9 +23,13 @@
 @import url(../blocks/popup/__container-input/popup__container-input.css);
 @import url(../blocks/popup/__container-submit/popup__container-submit.css);
 @import url(../blocks/popup/__container-discard/popup__container-discard.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image-caption/popup__image-caption.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/places/_place/places_place_mesto.css);
 @import url(../blocks/place/place.css);
+@import url(../blocks/place/__image-button/place__image-button.css);
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__caption/place__caption.css);
 @import url(../blocks/place/__caption-title/place__caption-title.css);
