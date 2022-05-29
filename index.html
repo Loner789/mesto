@@ -58,20 +58,17 @@
             </form>
         </div>
         <div class="popup" id="image_popup">
-            <figure class="popup__figure">
+            <div class="popup__figure">
                 <img src="#" alt="фото" class="popup__image">
-                <figcaption class="popup__image-caption"></figcaption>
-                <button type="reset" class="popup__container-discard" id="image-popup-discard-button"
-                    aria-label="закрыть_окно"></button>
-            </figure>
+                <p class="popup__image-caption"></p>
+                <button type="reset" class="popup__container-discard" id="image-popup-discard-button" aria-label="закрыть_окно"></button>
+            </div>
         </div>
     </div>
 
     <template id="card-template">
         <article class="place">
-            <button type="button" class="place__image-button">
             <img src="#" alt="фото" class="place__image">
-            </button>
             <div class="place__caption">
                 <p class="place__caption-title"></p>
                 <button type="button" class="place__like-button" aria-label="поставить_лайк"></button>
