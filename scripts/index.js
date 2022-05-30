@@ -40,13 +40,12 @@ function switchLike(item) {
 function deleteCard(item) {
   item.closest('.place').remove();
 }
-
 // Создание новой карточки
 function createCard(cardData) {
   const cardElement = cardTemplate.querySelector('.place').cloneNode(true); // Карточка
   const cardImage = cardElement.querySelector('.place__image');
   cardImage.src = cardData.link; // Адрес картинки
-  cardImage.alt = cardData.name; // Описание картинки
+  cardImage.alt = 'Фото ' + cardData.name + '.'; // Описание картинки
   cardElement.querySelector('.place__caption-title').textContent = cardData.name; // Подпись картинки
   cardElement.querySelector('.place__like-button').addEventListener('click', (evt) => 
   switchLike(evt.target)); // Активация-деактивация лайка
@@ -54,7 +53,7 @@ function createCard(cardData) {
   deleteCard(evt.target)); // Удаление карточки
   cardImage.addEventListener('click', (evt) => {
     popupImage.src = cardData.link; // Картинка Image-popup
-    popupImage.alt = cardData.name; // Описание картинки Image-popup
+    popupImage.alt = cardImage.alt; // Описание картинки Image-popup
     popupCaption.textContent = cardData.name; // Подпись Image-popup
     openPopup(imagePopup);
   });
