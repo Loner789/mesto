@@ -36,6 +36,11 @@ function closePopup(item) {
 function switchLike(item) {
   item.classList.toggle('place__like-button_active');
 }
+// Удаление карточки
+function deleteCard(item) {
+  item.closest('.place').remove();
+}
+
 // Создание новой карточки
 function createCard(cardData) {
   const cardElement = cardTemplate.querySelector('.place').cloneNode(true); // Карточка
@@ -46,7 +51,7 @@ function createCard(cardData) {
   cardElement.querySelector('.place__like-button').addEventListener('click', (evt) => 
   switchLike(evt.target)); // Активация-деактивация лайка
   cardElement.querySelector('.place__delete-button').addEventListener('click', (evt) =>
-  evt.target.closest('.place').remove()); // Удаление карточки
+  deleteCard(evt.target)); // Удаление карточки
   cardImage.addEventListener('click', (evt) => {
     popupImage.src = cardData.link; // Картинка Image-popup
     popupImage.alt = cardData.name; // Описание картинки Image-popup
