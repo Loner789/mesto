@@ -27,7 +27,7 @@
                 </div>
                 <button type="button" class="profile__add-button" aria-label="добавить_фото"></button>
             </section>
-            <section class="places places_place_mesto" aria-label="Блок_с_фото_мест">
+            <section class="places places_place_mesto" aria-label="блок_с_фото_мест">
             </section>
         </main>
         <footer class="footer footer_place_mesto">
@@ -53,11 +53,11 @@
                 <input type="url" class="popup__container-input" name="card-link" id="card-link"
                     placeholder="Ссылка на картинку" required>
                 <button type="submit" class="popup__container-submit">Создать</button>
-                <button type="reset" class="popup__container-discard" id="card-form-reset-button"
+                <button type="button" class="popup__container-discard" id="card-form-reset-button"
                     aria-label="закрыть_окно"></button>
             </form>
         </div>
-        <div class="popup" id="image_popup">
+        <div class="popup popup_type_image-popup" id="image_popup">
             <div class="popup__figure">
                 <img src="#" alt="фото" class="popup__image">
                 <p class="popup__image-caption"></p>
@@ -77,7 +77,8 @@
         </article>
     </template>
 
-    <script src="scripts/index.js"></script>
+    <script type="module" src="scripts/cards.js"></script>
+    <script type="module" src="scripts/index.js"></script>
 </body>
 
 </html>
