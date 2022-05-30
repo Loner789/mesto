@@ -1,5 +1,5 @@
 //Импортированный модуль с массивом карточек
-import {initialCards} from './cards';
+import {initialCards} from './cards.js';
 // ПЕРЕМЕННЫЕ:
 // Profile-popup
 const profileFormElement = document.querySelector('#edit_profile_popup'); // Модальное окно Profile-popup
