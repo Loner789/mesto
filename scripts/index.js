@@ -3,21 +3,22 @@ import {initialCards} from './cards.js';
 
 // ПЕРЕМЕННЫЕ:
 // Profile-popup
-const profileFormElement = document.querySelector('#edit_profile_popup'); // Модальное окно Profile-popup
+const profilePopup = document.querySelector('#edit_profile_popup'); // Модальное окно Profile-popup
 const profileButton = document.querySelector('.profile__edit-button'); // Кнопка открытия Profile-popup
 const profileFormDiscardButton = document.querySelector('#profile-form-reset-button'); // Кнопка закрытия Profile-popup
-const nameInput = profileFormElement.querySelector('#profile-name'); // Поле ввода имени
-const jobInput = profileFormElement.querySelector('#profile-job'); // Поле ввода профессии
+const nameInput = profilePopup.querySelector('#profile-name'); // Поле ввода имени
+const jobInput = profilePopup.querySelector('#profile-job'); // Поле ввода профессии
 const profileName = document.querySelector('.profile__title'); // Имя профиля
 const profileJob = document.querySelector('.profile__subtitle'); // Профессия в профиле
 
 // Card-popup
-const cardFormElement = document.querySelector('#add_card_popup'); // Модальное окно Card-popup
+const cardPopup = document.querySelector('#add_card_popup'); // Модальное окно Card-popup
+const cardFormElement = cardPopup.querySelector('.popup__container'); // Форма Card-popup
 const cardButton = document.querySelector('.profile__add-button'); // Кнопка открытия Card-popup
 const cardFormDiscardButton = document.querySelector('#card-form-reset-button'); // Кнопка закрытия Card-popup
 const cardTemplate = document.querySelector('#card-template').content; // Шаблон карточки
-const cardName = cardFormElement.querySelector('#card-name'); // Заголовок карточки
-const cardLink = cardFormElement.querySelector('#card-link'); // Ссылка на картинку карточки
+const cardName = cardPopup.querySelector('#card-name'); // Заголовок карточки
+const cardLink = cardPopup.querySelector('#card-link'); // Ссылка на картинку карточки
 const cardData = {};// Объект, передаваемый в качестве аргумента функции "createCard"
 const cardsContainer = document.querySelector('.places'); // Контейнер с карточками
 
@@ -90,7 +91,7 @@ function submitProfileForm(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы
   profileName.textContent = nameInput.value;// Вставляем новое значение имени
   profileJob.textContent = jobInput.value;// Вставляем новое значение профессии
-  closePopup(profileFormElement);
+  closePopup(profilePopup);
 }
 
 // Поведение кнопки подтверждения Card-popup
@@ -99,8 +100,8 @@ function submitCardForm(evt) {
   cardData.name = cardName.value;
   cardData.link = cardLink.value;
   renderCard(createCard(cardData));
-  closePopup(cardFormElement);
-  evt.target.reset(); // Очистка полей формы после добавления картинки
+  closePopup(cardPopup);
+  cardFormElement.reset(); // Очистка полей формы после добавления картинки
   }
 
 // Добавляем карточки «из коробки» при загрузке страницы
@@ -111,23 +112,23 @@ initialCards.forEach((item) => renderCard(createCard(item)));
   profileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(profileFormElement);
+  openPopup(profilePopup);
 });
 
 // Кнопка открытия Card-popup
-cardButton.addEventListener('click', () => openPopup(cardFormElement));
+cardButton.addEventListener('click', () => openPopup(cardPopup));
 
 // Кнопка подтверждения Profile-popup
-profileFormElement.addEventListener('submit', submitProfileForm);
+profilePopup.addEventListener('submit', submitProfileForm);
 
 // Кнопка подтверждения Card-popup
-cardFormElement.addEventListener('submit', submitCardForm);
+cardPopup.addEventListener('submit', submitCardForm);
 
 // Кнопка закрытия Profile-popup
-profileFormDiscardButton.addEventListener('click', () => closePopup(profileFormElement));
+profileFormDiscardButton.addEventListener('click', () => closePopup(profilePopup));
 
 // Кнопка закрытия Card-popup
-cardFormDiscardButton.addEventListener('click', () => closePopup(cardFormElement));
+cardFormDiscardButton.addEventListener('click', () => closePopup(cardPopup));
 
 // Кнопка закрытия Image-popup
 imagePopupDiscardButton.addEventListener('click', () => closePopup(imagePopup));
