@@ -24,15 +24,15 @@ function checkInputValidity (formElement, inputElement) {
 }
 
 // Проверка валидности всех полей формы
-function checkInvalidInputs (inputList) {
-  return inputList.some((inputElement) => {
+function checkInvalidInputs (inputsList) {
+  return inputsList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 }
 
 // Переключатель состояния кнопки отправки формы
-function toggleButtonState (inputList, buttonElement) {
-  if (checkInvalidInputs(inputList)) {
+function toggleButtonState (inputsList, buttonElement) {
+  if (checkInvalidInputs(inputsList)) {
     buttonElement.classList.add('popup__container-submit_disabled');
     buttonElement.disabled = true;
   } else {
@@ -43,24 +43,24 @@ function toggleButtonState (inputList, buttonElement) {
 
 // Добавление обработчиков всем полям формы
 function setEventListeners (formElement) {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__container-input'));
+  const inputsList = Array.from(formElement.querySelectorAll('.popup__container-input'));
   const buttonElement = formElement.querySelector('.popup__container-submit');
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputsList, buttonElement);
 
-  inputList.forEach((inputElement) => {
+  inputsList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputsList, buttonElement);
     });
   });
 }
 
 // Добавление обработчиков всем формам
 export function enableValidation () {
-  const formList = Array.from(document.querySelectorAll('.popup__container'));
+  const formsList = Array.from(document.querySelectorAll('.popup__container'));
   
-  formList.forEach((formElement) => {
+  formsList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
