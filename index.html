@@ -34,24 +34,36 @@
             <p class="footer__copyright" lang="en">&copy;&nbsp;2022 Mesto Russia</p>
         </footer>
         <div class="popup" id="edit_profile_popup">
-            <form action="#" class="popup__container" name="edit-profile-form">
+            <form action="#" class="popup__container" name="edit-profile-form" novalidate>
                 <h2 class="popup__container-title">Редактировать профиль</h2>
-                <input type="text" class="popup__container-input" name="profile-name" id="profile-name"
-                    placeholder="Имя">
-                <input type="text" class="popup__container-input" name="profile-job" id="profile-job"
-                    placeholder="Профессия">
+                <label class="popup__container-field">
+                    <input type="text" class="popup__container-input" name="profile-name" id="profile-name"
+                        placeholder="Имя" minlength="2" maxlength="40" required>
+                    <span class="profile-name-error popup__container-input-error"></span>
+                </label>
+                <label class="popup__container-field">
+                    <input type="text" class="popup__container-input" name="profile-job" id="profile-job"
+                        placeholder="Профессия" minlength="2" maxlength="200" required>
+                    <span class="profile-job-error popup__container-input-error"></span>
+                </label>
                 <button type="submit" class="popup__container-submit">Сохранить</button>
-                <button type="reset" class="popup__container-discard" id="profile-form-reset-button"
+                <button type="button" class="popup__container-discard" id="profile-form-reset-button"
                     aria-label="Закрыть окно."></button>
             </form>
         </div>
         <div class="popup" id="add_card_popup">
-            <form action="#" class="popup__container" name="add-card-form">
+            <form action="#" class="popup__container" name="add-card-form" novalidate>
                 <h2 class="popup__container-title">Новое место</h2>
-                <input type="text" class="popup__container-input" name="card-name" id="card-name" placeholder="Название"
-                    required>
-                <input type="url" class="popup__container-input" name="card-link" id="card-link"
-                    placeholder="Ссылка на картинку" required>
+                <label class="popup__container-field">
+                    <input type="text" class="popup__container-input" name="card-name" id="card-name"
+                        placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="card-name-error popup__container-input-error"></span>
+                </label>
+                <label class="popup__container-field">
+                    <input type="url" class="popup__container-input" name="card-link" id="card-link"
+                        placeholder="Ссылка на картинку" required>
+                    <span class="card-link-error popup__container-input-error"></span>
+                </label>
                 <button type="submit" class="popup__container-submit">Создать</button>
                 <button type="button" class="popup__container-discard" id="card-form-reset-button"
                     aria-label="Закрыть окно."></button>
@@ -61,7 +73,8 @@
             <div class="popup__figure">
                 <img src="#" alt="Фото." class="popup__image">
                 <p class="popup__image-caption"></p>
-                <button type="reset" class="popup__container-discard" id="image-popup-discard-button" aria-label="Закрыть окно."></button>
+                <button type="button" class="popup__container-discard" id="image-popup-discard-button"
+                    aria-label="Закрыть окно."></button>
             </div>
         </div>
     </div>
@@ -77,6 +90,7 @@
         </article>
     </template>
 
+    <script type="module" src="scripts/validate.js"></script>
     <script type="module" src="scripts/cards.js"></script>
     <script type="module" src="scripts/index.js"></script>
 </body>

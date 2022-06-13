@@ -1,3 +1,6 @@
+//Импортированный модуль с кодом валидации
+import {enableValidation} from './validate.js';
+
 //Импортированный модуль с массивом карточек
 import {initialCards} from './cards.js';
 
@@ -132,3 +135,12 @@ cardFormDiscardButton.addEventListener('click', () => closePopup(cardPopup));
 
 // Кнопка закрытия Image-popup
 imagePopupDiscardButton.addEventListener('click', () => closePopup(imagePopup));
+
+enableValidation({
+  formSelector: '.popup__container',
+  inputSelector: '.popup__container-input',
+  submitButtonSelector: '.popup__container-submit',
+  inactiveButtonClass: 'popup__container-submit_disabled',
+  inputErrorClass: 'popup__container-input_invalid',
+  errorClass: 'popup__container-input-error_visible'
+}); 
