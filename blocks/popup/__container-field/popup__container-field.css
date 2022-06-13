@@ -1,8 +1,4 @@
 .popup__container-field {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.popup__container-field:last-of-type {
-    margin-bottom: 0;
+    min-height: 60px;
+    max-width: 100%;
 }
