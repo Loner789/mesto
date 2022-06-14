@@ -13,14 +13,16 @@ export function enableValidation(arr) {
   // Показ ошибки ввода
   function showInputError(formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
     inputElement.classList.add(arr["inputErrorClass"]);
-    errorElement.textContent = errorMessage;
     errorElement.classList.add(arr["errorClass"]);
+    errorElement.textContent = errorMessage;
   }
 
   // Скрытие ошибки ввода
   function hideInputError(formElement, inputElement) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
     inputElement.classList.remove(arr["inputErrorClass"]);
     errorElement.classList.remove(arr["errorClass"]);
     errorElement.textContent = "";
@@ -30,7 +32,8 @@ export function enableValidation(arr) {
   function checkInputValidity(formElement, inputElement) {
     if (!inputElement.validity.valid) {
       showInputError(formElement, inputElement, inputElement.validationMessage);
-    } else {
+    } 
+    else {
       hideInputError(formElement, inputElement);
     }
   }
@@ -47,7 +50,8 @@ export function enableValidation(arr) {
     if (checkInvalidInputs(inputsList)) {
       buttonElement.classList.add(arr["inactiveButtonClass"]);
       buttonElement.disabled = true;
-    } else {
+    } 
+    else {
       buttonElement.classList.remove(arr["inactiveButtonClass"]);
       buttonElement.disabled = false;
     }
@@ -55,12 +59,8 @@ export function enableValidation(arr) {
 
   // Добавление обработчиков всем полям формы
   function setEventListeners(formElement) {
-    const inputsList = Array.from(
-      formElement.querySelectorAll(arr["inputSelector"])
-    );
-    const buttonElement = formElement.querySelector(
-      arr["submitButtonSelector"]
-    );
+    const inputsList = Array.from(formElement.querySelectorAll(arr["inputSelector"]));
+    const buttonElement = formElement.querySelector(arr["submitButtonSelector"]);
 
     toggleButtonState(inputsList, buttonElement);
 
