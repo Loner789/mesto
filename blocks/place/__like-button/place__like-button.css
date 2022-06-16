@@ -10,6 +10,7 @@
     border: none;
     outline: none;
     transition: opacity 0.5s ease-in-out;
+    flex-shrink: 0;
 }
 
 .place__like-button:hover {

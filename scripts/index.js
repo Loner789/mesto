@@ -1,12 +1,25 @@
-//Импортированный модуль с кодом валидации
-import { enableValidation } from "./validate.js";
+//ИМПОРТИРОВАННЫЕ МОДУЛИ:
+// Валидация
+import { enableValidation } from "./validate.js"; // Подключение валидации
+import { enableButton } from "./validate.js"; // Активация кнопки
+import { disableButton } from "./validate.js"; // Деактивация кнопки
+import { clearErrors } from "./validate.js"; // Очистка ошибок
 
-//Импортированный модуль с массивом карточек
-import { initialCards } from "./cards.js";
+// Карточки
+import { initialCards } from "./cards.js"; // Массив карточек
 
 // ПЕРЕМЕННЫЕ:
+// Общие
+const mesto = {
+  formSelector: ".popup__container",
+  inputSelector: ".popup__container-input",
+  submitButtonSelector: ".popup__container-submit",
+  inactiveButtonClass: "popup__container-submit_disabled",
+  inputErrorClass: "popup__container-input_invalid",
+  errorClass: "popup__container-input-error_visible"
+}
+
 // Profile-popup
-const popupsList = document.querySelectorAll(".popup"); // Массив модальных окон
 const profilePopup = document.querySelector("#edit_profile_popup"); // Модальное окно Profile-popup
 const profileButton = document.querySelector(".profile__edit-button"); // Кнопка открытия Profile-popup
 const profileFormDiscardButton = document.querySelector("#profile-form-reset-button"); // Кнопка закрытия Profile-popup
@@ -14,10 +27,10 @@ const nameInput = profilePopup.querySelector("#profile-name"); // Поле вв�
 const jobInput = profilePopup.querySelector("#profile-job"); // Поле ввода профессии
 const profileName = document.querySelector(".profile__title"); // Имя профиля
 const profileJob = document.querySelector(".profile__subtitle"); // Профессия в профиле
+const profileSubmitButton = document.querySelector("#profile-submit-button"); // Кнопка подтверждения профиля
 
 // Card-popup
 const cardPopup = document.querySelector("#add_card_popup"); // Модальное окно Card-popup
-const cardFormElement = cardPopup.querySelector(".popup__container"); // Форма Card-popup
 const cardButton = document.querySelector(".profile__add-button"); // Кнопка открытия Card-popup
 const cardFormDiscardButton = document.querySelector("#card-form-reset-button"); // Кнопка закрытия Card-popup
 const cardTemplate = document.querySelector("#card-template").content; // Шаблон карточки
@@ -25,6 +38,7 @@ const cardName = cardPopup.querySelector("#card-name"); // Заголовок к
 const cardLink = cardPopup.querySelector("#card-link"); // Ссылка на картинку карточки
 const cardData = {}; // Объект, передаваемый в качестве аргумента функции "createCard"
 const cardsContainer = document.querySelector(".places"); // Контейнер с карточками
+const cardSubmitButton = document.querySelector("#card-submit-button"); // Кнопка создания карточки
 
 // Image-popup
 const imagePopup = document.querySelector("#image_popup"); // Модальное окно Image-popup
@@ -111,6 +125,11 @@ function renderCard(item) {
   cardsContainer.prepend(item);
 }
 
+// Сброс формы
+function resetForm(formElement) {
+  formElement.querySelector(".popup__container").reset();
+}
+
 // Поведение кнопки подтверждения Profile-popup
 function submitProfileForm(evt) {
   evt.preventDefault(); // Отменяет стандартную отправку формы
@@ -126,11 +145,13 @@ function submitCardForm(evt) {
   cardData.link = cardLink.value;
   renderCard(createCard(cardData));
   closePopup(cardPopup);
-  cardFormElement.reset(); // Очистка полей формы после добавления картинки
 }
 
 // Добавляем карточки «из коробки» при загрузке страницы
 initialCards.forEach((item) => renderCard(createCard(item)));
+
+// Подключение валидации
+enableValidation(mesto);
 
 // СЛУШАТЕЛИ СОБЫТИЙ:
 // Кнопка открытия Profile-popup
@@ -138,10 +159,17 @@ profileButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(profilePopup);
+  clearErrors(profilePopup, mesto);
+  enableButton(profileSubmitButton, mesto)
 });
 
 // Кнопка открытия Card-popup
-cardButton.addEventListener("click", () => openPopup(cardPopup));
+cardButton.addEventListener("click", () => {
+  openPopup(cardPopup);
+  disableButton(cardSubmitButton, mesto);
+  clearErrors(cardPopup, mesto);
+  resetForm(cardPopup);
+  });
 
 // Кнопка подтверждения Profile-popup
 profilePopup.addEventListener("submit", submitProfileForm);
@@ -150,22 +178,10 @@ profilePopup.addEventListener("submit", submitProfileForm);
 cardPopup.addEventListener("submit", submitCardForm);
 
 // Кнопка закрытия Profile-popup
-profileFormDiscardButton.addEventListener("click", () =>
-  closePopup(profilePopup)
-);
+profileFormDiscardButton.addEventListener("click", () => closePopup(profilePopup));
 
 // Кнопка закрытия Card-popup
 cardFormDiscardButton.addEventListener("click", () => closePopup(cardPopup));
 
 // Кнопка закрытия Image-popup
 imagePopupDiscardButton.addEventListener("click", () => closePopup(imagePopup));
-
-// Подключение валидации
-enableValidation({
-  formSelector: ".popup__container",
-  inputSelector: ".popup__container-input",
-  submitButtonSelector: ".popup__container-submit",
-  inactiveButtonClass: "popup__container-submit_disabled",
-  inputErrorClass: "popup__container-input_invalid",
-  errorClass: "popup__container-input-error_visible"
-});
