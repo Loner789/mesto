@@ -10,7 +10,7 @@ import { initialCards } from "./cards.js"; // Массив карточек
 
 // ПЕРЕМЕННЫЕ:
 // Общие
-const popupsList = document.querySelectorAll(".popup"); // Массив с модальными окнами
+const popupsList = document.querySelectorAll(".popup"); // Псевдомассив с модальными окнами
 const mesto = {
   formSelector: ".popup__container",
   inputSelector: ".popup__container-input",
