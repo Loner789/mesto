@@ -10,6 +10,7 @@ import { initialCards } from "./cards.js"; // Массив карточек
 
 // ПЕРЕМЕННЫЕ:
 // Общие
+const popupsList = Array.from(document.querySelectorAll(".popup")); // Массив с модальными окнами
 const mesto = {
   formSelector: ".popup__container",
   inputSelector: ".popup__container-input",
@@ -17,7 +18,7 @@ const mesto = {
   inactiveButtonClass: "popup__container-submit_disabled",
   inputErrorClass: "popup__container-input_invalid",
   errorClass: "popup__container-input-error_visible"
-}
+} // Объект с настройками для валидации
 
 // Profile-popup
 const profilePopup = document.querySelector("#edit_profile_popup"); // Модальное окно Profile-popup
