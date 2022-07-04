@@ -22,9 +22,7 @@ export class Card {
   // Переключатель кнопки "Like"
   _switchLike() {
     this.isLiked = !this.isLiked;
-    this._element
-      .querySelector(".place__like-button")
-      .classList.toggle("place__like-button_active");
+    this._likeButton.classList.toggle("place__like-button_active");
   }
 
   // Удаление карточки
@@ -34,32 +32,31 @@ export class Card {
 
   // Установка слушателей
   _setEventListeners() {
-    this._element
-      .querySelector(".place__like-button")
-      .addEventListener("click", () => {
-        this._switchLike();
-      });
+    this._likeButton = this._element.querySelector(".place__like-button");
+    this._deleteButton = this._element.querySelector(".place__delete-button");
 
-    this._element
-      .querySelector(".place__delete-button")
-      .addEventListener("click", () => {
-        this._deleteCard();
-      });
+    this._likeButton.addEventListener("click", () => {
+      this._switchLike();
+    });
 
-    this._element
-      .querySelector(".place__image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this._name, this._link);
-      });
+    this._deleteButton.addEventListener("click", () => {
+      this._deleteCard();
+    });
+
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
   // Создание новой карточки
   createCard() {
     this._element = this._getTemplate();
-    this._element.querySelector(".place__caption-title").textContent =
-      this._name;
-    this._element.querySelector(".place__image").alt = `Фото ${this._name}.`;
-    this._element.querySelector(".place__image").src = this._link;
+    this._cardCaption = this._element.querySelector(".place__caption-title");
+    this._cardImage = this._element.querySelector(".place__image");
+
+    this._cardCaption.textContent = this._name;
+    this._cardImage.alt = `Фото ${this._name}.`;
+    this._cardImage.src = this._link;
 
     this._setEventListeners();
 

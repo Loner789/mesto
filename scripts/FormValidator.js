@@ -91,12 +91,8 @@ export class FormValidator {
     });
   }
 
-  // Подключение ввалидации
+  // Подключение валидации
   enableValidation() {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
-
     this._setEventListeners();
   }
 }
