@@ -24,7 +24,6 @@ export class FormValidator {
 
   // Скрытие ошибки ввода
   _hideInputError(inputElement) {
-    if (!this._errorElement) return;
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElement.classList.remove(this._errorClass);
     this._errorElement.textContent = "";
@@ -97,6 +96,7 @@ export class FormValidator {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
+
     this._setEventListeners();
   }
 }
