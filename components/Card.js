@@ -1,11 +1,11 @@
 // Класс карточки
-export class Card {
+export default class Card {
   // Начальная инициализация
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._handleImageClick = handleImageClick;
+    this._handleCardClick = handleCardClick;
     this.isLiked = false;
   }
 
@@ -44,7 +44,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
   }
 

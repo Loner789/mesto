@@ -37,12 +37,12 @@
             <form action="#" class="popup__container" name="edit-profile-form" id="edit_profile_form" novalidate>
                 <h2 class="popup__container-title">Редактировать профиль</h2>
                 <label class="popup__container-field">
-                    <input type="text" class="popup__container-input" name="profile-name" id="profile-name"
+                    <input type="text" class="popup__container-input" name="name" id="profile-name"
                         placeholder="Имя" minlength="2" maxlength="40" required>
                     <span class="profile-name-error popup__container-input-error"></span>
                 </label>
                 <label class="popup__container-field">
-                    <input type="text" class="popup__container-input" name="profile-job" id="profile-job"
+                    <input type="text" class="popup__container-input" name="info" id="profile-job"
                         placeholder="Профессия" minlength="2" maxlength="200" required>
                     <span class="profile-job-error popup__container-input-error"></span>
                 </label>
@@ -55,12 +55,12 @@
             <form action="#" class="popup__container" name="add-card-form" id="add_card_form" novalidate>
                 <h2 class="popup__container-title">Новое место</h2>
                 <label class="popup__container-field">
-                    <input type="text" class="popup__container-input" name="card-name" id="card-name"
+                    <input type="text" class="popup__container-input" name="name" id="card-name"
                         placeholder="Название" minlength="2" maxlength="30" required>
                     <span class="card-name-error popup__container-input-error"></span>
                 </label>
                 <label class="popup__container-field">
-                    <input type="url" class="popup__container-input" name="card-link" id="card-link"
+                    <input type="url" class="popup__container-input" name="link" id="card-link"
                         placeholder="Ссылка на картинку" required>
                     <span class="card-link-error popup__container-input-error"></span>
                 </label>
@@ -90,7 +90,7 @@
         </article>
     </template>
 
-    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="pages/index.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,6 @@
 .popup__container-discard {
+    margin: 0;
+    padding: 0;
     width: 32px;
     height: 32px;
     background-color: transparent;
