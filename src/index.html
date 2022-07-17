@@ -6,18 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body>
     <div class="page">
         <header class="header header_place_mesto">
-            <a href="https://wikiway.com/russia/" target="_blank"><img src="images/icon_logo-white.svg"
+            <a href="https://wikiway.com/russia/" target="_blank"><img src="<%=require('./images/icon_logo-white.svg')%>"
                     alt="Логотип Россия." class="logo logo_place_header"></a>
         </header>
         <main class="content">
             <section class="profile profile_place_mesto">
-                <img src="images/image_kusto.jpg" alt="Аватар Кусто." class="profile__avatar">
+                <img src="<%=require('./images/image_kusto.jpg')%>" alt="Аватар Кусто." class="profile__avatar">
                 <div class="profile__info">
                     <div class="profile__info-wrapper">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -89,8 +88,6 @@
             <button type="button" class="place__delete-button" aria-label="Удалить карточку."></button>
         </article>
     </template>
-
-    <script type="module" src="pages/index.js"></script>
 </body>
 
 </html>
