@@ -25,31 +25,37 @@ const userInfo = new UserInfo({
 });
 
 // Profile-form popup
-const profilePopup = new PopupWithForm(selectors.profilePopupSelector, {
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
-    profilePopup.close();
+const profilePopup = new PopupWithForm(
+  {
+    handleFormSubmit: (data) => {
+      userInfo.setUserInfo(data);
+      profilePopup.close();
+    },
   },
-});
+  selectors.profilePopupSelector
+);
 profilePopup.setEventListeners();
 
 // Card-form popup
-const cardPopup = new PopupWithForm(selectors.cardPopupSelector, {
-  handleFormSubmit: (item) => {
-    const card = new Card(
-      {
-        data: item,
-        handleCardClick: (data) => {
-          imagePopup.open(data);
+const cardPopup = new PopupWithForm(
+  {
+    handleFormSubmit: (item) => {
+      const card = new Card(
+        {
+          data: item,
+          handleCardClick: (data) => {
+            imagePopup.open(data);
+          },
         },
-      },
-      selectors.cardSelector
-    );
-    const cardElement = card.createCard();
-    cardList.addItem(cardElement);
-    cardPopup.close();
+        selectors.cardSelector
+      );
+      const cardElement = card.createCard();
+      cardList.addItem(cardElement);
+      cardPopup.close();
+    },
   },
-});
+  selectors.cardPopupSelector
+);
 cardPopup.setEventListeners();
 
 // Popup with picture
