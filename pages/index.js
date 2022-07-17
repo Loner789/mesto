@@ -1,15 +1,14 @@
-//ИМПОРТИРОВАННЫЕ МОДУЛИ:
+// IMPORTED MODULES:
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-
 import {
-  selectors,
   initialCards,
   validationConfig,
+  selectors,
   profileFormElement,
   profileButton,
   nameInput,
@@ -18,23 +17,14 @@ import {
   cardButton,
 } from "../utils/constants.js";
 
-// Подключение валидации форм
-const profileFormValidator = new FormValidator(
-  validationConfig,
-  profileFormElement
-); // Валидация формы профиля
-profileFormValidator.enableValidation();
-const cardFormValidator = new FormValidator(validationConfig, cardFormElement); // Валидация формы создания карточки
-cardFormValidator.enableValidation();
-
-const imagePopup = new PopupWithImage(selectors.imagePopupSelector);
-imagePopup.setEventListeners();
-
+// CLASSES:
+// Information about user
 const userInfo = new UserInfo({
   userName: selectors.userNameSelector,
   userInfo: selectors.userInfoSelector,
 });
 
+// Profile-form popup
 const profilePopup = new PopupWithForm(selectors.profilePopupSelector, {
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
@@ -43,9 +33,18 @@ const profilePopup = new PopupWithForm(selectors.profilePopupSelector, {
 });
 profilePopup.setEventListeners();
 
+// Card-form popup
 const cardPopup = new PopupWithForm(selectors.cardPopupSelector, {
-  handleFormSubmit: (data) => {
-    const card = new Card(data, ".card-template", handleCardClick);
+  handleFormSubmit: (item) => {
+    const card = new Card(
+      {
+        data: item,
+        handleCardClick: (data) => {
+          imagePopup.open(data);
+        },
+      },
+      selectors.cardSelector
+    );
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
     cardPopup.close();
@@ -53,11 +52,24 @@ const cardPopup = new PopupWithForm(selectors.cardPopupSelector, {
 });
 cardPopup.setEventListeners();
 
+// Popup with picture
+const imagePopup = new PopupWithImage(selectors.imagePopupSelector);
+imagePopup.setEventListeners();
+
+// Initial cards activation
 const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, ".card-template", handleCardClick);
+      const card = new Card(
+        {
+          data: item,
+          handleCardClick: (data) => {
+            imagePopup.open(data);
+          },
+        },
+        selectors.cardSelector
+      );
       const cardElement = card.createCard();
       cardList.addItem(cardElement);
     },
@@ -66,14 +78,20 @@ const cardList = new Section(
 );
 cardList.renderItems();
 
-// ФУНКЦИИ:
-// Параметры попапа картинки
-function handleCardClick(name, link) {
-  imagePopup.open(name, link);
-}
+// FORMS VALIDATORS ACTIVATION:
+// Profile-form validator activation
+const profileFormValidator = new FormValidator(
+  validationConfig,
+  profileFormElement
+);
+profileFormValidator.enableValidation();
 
-// СЛУШАТЕЛИ СОБЫТИЙ:
-// Кнопка открытия Profile-popup
+// Card-form validator activation
+const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
+cardFormValidator.enableValidation();
+
+// EVENT LISTENERS:
+// Profile-popup button click handler
 profileButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
 
@@ -85,7 +103,7 @@ profileButton.addEventListener("click", () => {
   profilePopup.open();
 });
 
-// Кнопка открытия Card-popup
+// Card-popup button click handler
 cardButton.addEventListener("click", () => {
   cardFormValidator.disableButton();
   cardFormValidator.clearErrors();

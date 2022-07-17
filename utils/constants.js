@@ -1,5 +1,4 @@
-// ПЕРЕМЕННЫЕ:
-// Шесть карточек «из коробки»
+// Array with cards "from box" data
 const initialCards = [
   {
     name: "Архыз",
@@ -26,7 +25,7 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-// Объект с настройками для валидации
+// Array with data for forms validation
 const validationConfig = {
   formSelector: ".popup__container",
   inputSelector: ".popup__container-input",
@@ -35,26 +34,27 @@ const validationConfig = {
   inputErrorClass: "popup__container-input_invalid",
   errorClass: "popup__container-input-error_visible",
 };
-
+// Selectors
 const selectors = {
   imagePopupSelector: "#image_popup",
   cardPopupSelector: "#add_card_popup",
   profilePopupSelector: "#edit_profile_popup",
-  cardsContainerSelector: ".places",
   userNameSelector: ".profile__title",
   userInfoSelector: ".profile__subtitle",
+  cardsContainerSelector: ".places",
+  cardSelector: ".card-template",
 };
 
 // Profile-popup
-const profilePopup = document.querySelector("#edit_profile_popup"); // Модальное окно Profile-popup
-const profileFormElement = document.querySelector("#edit_profile_form"); // Форма добавления данных профиля
-const profileButton = document.querySelector(".profile__edit-button"); // Кнопка открытия Profile-popup
-const nameInput = profilePopup.querySelector("#profile-name"); // Поле ввода имени
-const jobInput = profilePopup.querySelector("#profile-job"); // Поле ввода профессии
+const profilePopup = document.querySelector("#edit_profile_popup");
+const profileFormElement = document.querySelector("#edit_profile_form");
+const profileButton = document.querySelector(".profile__edit-button");
+const nameInput = profilePopup.querySelector("#profile-name");
+const jobInput = profilePopup.querySelector("#profile-job");
 
 // Card-popup
-const cardFormElement = document.querySelector("#add_card_form"); // Форма добавления карточки
-const cardButton = document.querySelector(".profile__add-button"); // Кнопка открытия Card-popup
+const cardFormElement = document.querySelector("#add_card_form");
+const cardButton = document.querySelector(".profile__add-button");
 
 export {
   initialCards,
@@ -65,5 +65,5 @@ export {
   nameInput,
   jobInput,
   cardFormElement,
-  cardButton,
+  cardButton
 };
