@@ -18,6 +18,22 @@ import {
   cardButton,
 } from "../utils/constants.js";
 
+// FUNCTIONS:
+// Card creation
+function createCard(item) {
+  const card = new Card(
+    {
+      data: item,
+      handleCardClick: (data) => {
+        imagePopup.open(data);
+      },
+    },
+    selectors.cardSelector
+  );
+  const cardElement = card.createCard();
+  return cardElement;
+}
+
 // CLASSES:
 // Information about user
 const userInfo = new UserInfo({
@@ -41,17 +57,7 @@ profilePopup.setEventListeners();
 const cardPopup = new PopupWithForm(
   {
     handleFormSubmit: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          handleCardClick: (data) => {
-            imagePopup.open(data);
-          },
-        },
-        selectors.cardSelector
-      );
-      const cardElement = card.createCard();
-      cardList.addItem(cardElement);
+      cardList.addItem(createCard(item));
       cardPopup.close();
     },
   },
@@ -68,17 +74,7 @@ const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          handleCardClick: (data) => {
-            imagePopup.open(data);
-          },
-        },
-        selectors.cardSelector
-      );
-      const cardElement = card.createCard();
-      cardList.addItem(cardElement);
+      cardList.addItem(createCard(item));
     },
   },
   selectors.cardsContainerSelector
