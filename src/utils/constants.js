@@ -39,8 +39,11 @@ const selectors = {
   imagePopupSelector: "#image_popup",
   cardPopupSelector: "#add_card_popup",
   profilePopupSelector: "#edit_profile_popup",
+  avatarPopupSelector: "#edit_avatar_popup",
+  cardDeletionPopupSelector: "#card_deletion_popup",
   userNameSelector: ".profile__title",
   userInfoSelector: ".profile__subtitle",
+  userAvatarSelector: ".profile__avatar",
   cardsContainerSelector: ".places",
   cardSelector: ".card-template",
 };
@@ -56,6 +59,10 @@ const jobInput = profilePopup.querySelector("#profile-job");
 const cardFormElement = document.querySelector("#add_card_form");
 const cardButton = document.querySelector(".profile__add-button");
 
+//Avatar-popup
+const avatarFormElement = document.querySelector("#edit_avatar_form");
+const avatarButton = document.querySelector(".profile__img-wrapper");
+
 export {
   initialCards,
   validationConfig,
@@ -65,5 +72,7 @@ export {
   nameInput,
   jobInput,
   cardFormElement,
-  cardButton
+  cardButton,
+  avatarFormElement,
+  avatarButton,
 };

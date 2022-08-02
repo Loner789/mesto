@@ -11,12 +11,15 @@
 <body>
     <div class="page">
         <header class="header header_place_mesto">
-            <a href="https://wikiway.com/russia/" target="_blank"><img src="<%=require('./images/icon_logo-white.svg')%>"
-                    alt="Логотип Россия." class="logo logo_place_header"></a>
+            <a href="https://wikiway.com/russia/" target="_blank"><img
+                    src="<%=require('./images/icon_logo-white.svg')%>" alt="Логотип Россия."
+                    class="logo logo_place_header"></a>
         </header>
         <main class="content">
             <section class="profile profile_place_mesto">
-                <img src="<%=require('./images/image_kusto.jpg')%>" alt="Аватар Кусто." class="profile__avatar">
+                <div class="profile__img-wrapper">
+                    <img src="<%=require('./images/image_kusto.jpg')%>" alt="Аватар Кусто." class="profile__avatar">
+                </div>
                 <div class="profile__info">
                     <div class="profile__info-wrapper">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -76,6 +79,28 @@
                     aria-label="Закрыть окно."></button>
             </div>
         </div>
+        <div class="popup" id="edit_avatar_popup">
+            <form action="#" class="popup__container" name="edit-avatar-form" id="edit_avatar_form" novalidate>
+                <h2 class="popup__container-title">Обновить аватар</h2>
+                <label class="popup__container-field">
+                    <input type="url" class="popup__container-input" name="link" id="avatar-link"
+                        placeholder="Ссылка на картинку профиля" required>
+                    <span class="avatar-link-error popup__container-input-error"></span>
+                </label>
+                <button type="submit" class="popup__container-submit">Сохранить</button>
+                <button type="button" class="popup__container-discard" id="profile-form-reset-button"
+                    aria-label="Закрыть окно."></button>
+            </form>
+        </div>
+        <div class="popup" id="card_deletion_popup">
+            <form action="#" class="popup__container" name="card-deletion-form" id="card_deletion_form" novalidate>
+                <h2 class="popup__container-title popup__container-title_place_card-deletion-popup">Вы&nbsp;уверены?
+                </h2>
+                <button type="submit" class="popup__container-submit">Да</button>
+                <button type="button" class="popup__container-discard" id="card-deletion-form-reset-button"
+                    aria-label="Закрыть окно."></button>
+            </form>
+        </div>
     </div>
 
     <template id="card-template" class="card-template">
@@ -83,7 +108,10 @@
             <img src="#" alt="Фото." class="place__image">
             <div class="place__caption">
                 <p class="place__caption-title"></p>
-                <button type="button" class="place__like-button" aria-label="Поставить лайк."></button>
+                <div class="place__like-wrapper">
+                    <button type="button" class="place__like-button" aria-label="Поставить лайк."></button>
+                    <p class="place__likes-counter">0</p>
+                </div>
             </div>
             <button type="button" class="place__delete-button" aria-label="Удалить карточку."></button>
         </article>
