@@ -1,30 +1,3 @@
-// Array with cards "from box" data
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 // Array with data for forms validation
 const validationConfig = {
   formSelector: ".popup__container",
@@ -48,6 +21,12 @@ const selectors = {
   cardSelector: ".card-template",
 };
 
+// Api configuration
+const apiConfig = {
+  host: "https://mesto.nomoreparties.co/v1/cohort-47",
+  token: "b01e7d69-f440-4376-9f8a-91f4cbf1fc4f",
+};
+
 // Profile-popup
 const profilePopup = document.querySelector("#edit_profile_popup");
 const profileFormElement = document.querySelector("#edit_profile_form");
@@ -64,7 +43,7 @@ const avatarFormElement = document.querySelector("#edit_avatar_form");
 const avatarButton = document.querySelector(".profile__img-wrapper");
 
 export {
-  initialCards,
+  apiConfig,
   validationConfig,
   selectors,
   profileFormElement,

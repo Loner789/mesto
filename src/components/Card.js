@@ -39,11 +39,11 @@ export default class Card {
     this._deleteButton = this._element.querySelector(".place__delete-button");
 
     this._likeButton.addEventListener("click", () => {
-      this._switchLike();
+      this.switchLike();
     });
 
     this._deleteButton.addEventListener("click", () => {
-      this._deleteCard();
+      this.deleteCard();
     });
 
     this._cardImage.addEventListener("click", () => {
@@ -53,7 +53,7 @@ export default class Card {
 
   _hideDeleteButton() {
     if (!(this._ownerId === this._userId)) {
-      this._cardDeleteButton.style.display = "none";
+      this._deleteButton.style.display = "none";
     }
   }
 
@@ -67,7 +67,7 @@ export default class Card {
 
   setLikesCount(item) {
     this._element.querySelector(".place__likes-counter").textContent =
-      item.likes.length;
+      item;
   }
 
   generateCard() {
@@ -79,17 +79,17 @@ export default class Card {
     this._cardImage.alt = `Фото ${this._name}.`;
     this._cardImage.src = this._link;
 
+    this._setEventListeners();
+
     if (
       this._likes.find((item) => {
         return this._userId === item._id;
       })
     ) {
-      this._switchLike();
+      this.switchLike();
     }
     this.setLikesCount(this._likes.length);
     this._hideDeleteButton();
-
-    this._setEventListeners();
 
     return this._element;
   }

@@ -1,7 +1,7 @@
 export default class Api {
-  constructor(mainUrl, headers) {
-    this._mainUrl = mainUrl;
-    this._headers = headers;
+  constructor(host, token) {
+    this._host = host;
+    this._token = token;
   }
 
   _checkResult(res) {
@@ -13,27 +13,27 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._mainUrl}/cards`, {
+    return fetch(`${this._host}/cards`, {
       method: "GET",
       headers: {
-        authorization: `${this._headers.authorization}`,
+        authorization: `${this._token}`,
       },
     }).then(this._checkResult);
   }
 
   getUserInfo() {
-    return fetch(`${this._mainUrl}/users/me`, {
+    return fetch(`${this._host}/users/me`, {
       method: "GET",
       headers: {
-        authorization: `${this._headers.authorization}`,
+        authorization: `${this._token}`,
       },
     }).then(this._checkResult);
   }
 
   setUserInfo(data) {
-    return fetch(`${this._mainUrl}/users/me`, {
+    return fetch(`${this._host}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._token,
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -42,9 +42,9 @@ export default class Api {
   }
 
   addNewCard(data) {
-    return fetch(`${this._mainUrl}/cards`, {
+    return fetch(`${this._host}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this._token,
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -53,30 +53,30 @@ export default class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._mainUrl}/cards/${cardId}`, {
+    return fetch(`${this._host}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._token,
     }).then(this._checkResult);
   }
 
   addLike(cardId) {
-    return fetch(`${this._mainUrl}/cards/${cardId}/likes`, {
+    return fetch(`${this._host}/cards/${cardId}/likes`, {
       method: "PUT",
-      headers: this._headers,
+      headers: this._token,
     }).then(this._checkResult);
   }
 
   deleteLike(cardId) {
-    return fetch(`${this._mainUrl}/cards/${cardId}/likes`, {
+    return fetch(`${this._host}/cards/${cardId}/likes`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._token,
     }).then(this._checkResult);
   }
 
   setUserAvatar(data) {
-    return fetch(`${this._mainUrl}/users/me/avatar`, {
+    return fetch(`${this._host}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._token,
       body: JSON.stringify({
         avatar: data.avatar,
       }),

@@ -9,7 +9,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-  initialCards,
+  apiConfig,
   validationConfig,
   selectors,
   profileFormElement,
@@ -48,7 +48,7 @@ function createCard(item) {
           .addLike(item._id)
           .then((data) => {
             card.switchLike();
-            card.setLikesCount(data);
+            card.setLikesCount(data.likes.length);
           })
           .catch((err) => console.log(err));
       },
@@ -57,7 +57,7 @@ function createCard(item) {
           .removeLike(item._id)
           .then((data) => {
             card.switchLike();
-            card.setLikesCount(data);
+            card.setLikesCount(data.likes.length);
           })
           .catch((err) => console.log(err));
       },
@@ -66,18 +66,12 @@ function createCard(item) {
     selectors.cardSelector
   );
 
-  return cardElement;
+  return card;
 }
 
 // CLASSES:
 // Api initialization
-const api = new Api({
-  mainUrl: "https://mesto.nomoreparties.co/v1/cohort-47",
-  headers: {
-    authorization: "b01e7d69-f440-4376-9f8a-91f4cbf1fc4f",
-    "Content-Type": "application/json",
-  },
-});
+const api = new Api(apiConfig.host, apiConfig.token);
 
 // Information about user
 const userInfo = new UserInfo({
@@ -206,7 +200,7 @@ profileButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
 
   nameInput.value = userData.name;
-  jobInput.value = userData.info;
+  jobInput.value = userData.about;
 
   profileFormValidator.clearErrors();
   profileFormValidator.enableButton();
