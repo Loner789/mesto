@@ -29,35 +29,37 @@ function createCard(item) {
     {
       data: item,
       handleCardClick: () => {
-        imagePopup.open(data);
+        imagePopup.open(item);
       },
       handleDeletion: () => {
         cardDeletionPopup.open();
         cardDeletionPopup.setSubmitAction(() => {
+          cardDeletionPopup.renderLoadingDelete(true);
           api
             .deleteCard(item._id)
             .then(() => {
               card.deleteCard();
               cardDeletionPopup.close();
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
+            .finally(cardDeletionPopup.renderLoadingDelete(false));
         });
       },
-      addLike: () => {
+      setLike: () => {
         api
           .addLike(item._id)
-          .then((data) => {
+          .then((item) => {
             card.switchLike();
-            card.setLikesCount(data.likes.length);
+            card.setLikesCount(item.likes.length);
           })
           .catch((err) => console.log(err));
       },
       removeLike: () => {
         api
-          .removeLike(item._id)
-          .then((data) => {
+          .deleteLike(item._id)
+          .then((item) => {
             card.switchLike();
-            card.setLikesCount(data.likes.length);
+            card.setLikesCount(item.likes.length);
           })
           .catch((err) => console.log(err));
       },
@@ -71,7 +73,7 @@ function createCard(item) {
 
 // CLASSES:
 // Api initialization
-const api = new Api(apiConfig.host, apiConfig.token);
+const api = new Api(apiConfig);
 
 // Information about user
 const userInfo = new UserInfo({
@@ -89,6 +91,7 @@ const profilePopup = new PopupWithForm(
         .setUserInfo(data)
         .then((item) => {
           userInfo.setUserInfo(item);
+          profilePopup.close();
         })
         .catch((err) => console.log(err))
         .finally(() => {
@@ -107,15 +110,15 @@ const cardPopup = new PopupWithForm(
       cardPopup.renderLoading(true);
       api
         .addNewCard(data)
-        .then((item) => {
-          const cardElement = createCard(item).generateCard();
+        .then((card) => {
+          const cardElement = createCard(card).generateCard();
           cardList.addItem(cardElement);
+          cardPopup.close();
         })
         .catch((err) => console.log(err))
         .finally(() => {
           cardPopup.renderLoading(false);
         });
-      cardList.addItem(createCard(item));
       cardPopup.close();
     },
   },
@@ -132,6 +135,7 @@ const avatarPopup = new PopupWithForm(
         .setUserAvatar(data)
         .then((item) => {
           userInfo.setUserAvatar(item);
+          avatarPopup.close();
         })
         .catch((err) => console.log(err))
         .finally(() => {

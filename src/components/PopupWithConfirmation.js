@@ -22,9 +22,9 @@ export default class PopupWithConfirmation extends Popup {
 
   renderLoadingDelete(isLoading) {
     if (isLoading) {
-      this._popupButton.textContent = "Удаление...";
+      this._submitButton.textContent = "Удаление...";
     } else {
-      this._popupButton.textContent = this._popupButtonText;
+      this._submitButton.textContent = this._submitButtonText;
     }
   }
 }
