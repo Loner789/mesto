@@ -42,7 +42,9 @@ function createCard(item) {
               cardDeletionPopup.close();
             })
             .catch((err) => console.log(err))
-            .finally(cardDeletionPopup.renderLoadingDelete(false));
+            .finally(() => {
+              cardDeletionPopup.renderLoadingDelete(false);
+            });
         });
       },
       setLike: () => {
@@ -119,7 +121,6 @@ const cardPopup = new PopupWithForm(
         .finally(() => {
           cardPopup.renderLoading(false);
         });
-      cardPopup.close();
     },
   },
   selectors.cardPopupSelector
@@ -157,7 +158,7 @@ const cardDeletionPopup = new PopupWithConfirmation(
 );
 cardDeletionPopup.setEventListeners();
 
-// Initial cards activation
+// Rendering of cards array
 const cardList = new Section(
   {
     renderer: (data) => {
@@ -168,14 +169,16 @@ const cardList = new Section(
   selectors.cardsContainerSelector
 );
 
+// ID variable
 let userId;
 
+// Getting data from server and adding it to DOM
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([user, data]) => {
+  .then(([user, cards]) => {
     userInfo.setUserInfo(user);
     userId = user._id;
 
-    return cardList.renderItems(data);
+    return cardList.renderItems(cards);
   })
   .catch((err) => console.log(err));
 
@@ -187,16 +190,16 @@ const profileFormValidator = new FormValidator(
 );
 profileFormValidator.enableValidation();
 
-// Card-form validator activation
-const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
-cardFormValidator.enableValidation();
-
 // Avatar-form validator activation
 const avatarFormValidator = new FormValidator(
   validationConfig,
   avatarFormElement
 );
 avatarFormValidator.enableValidation();
+
+// Card-form validator activation
+const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
+cardFormValidator.enableValidation();
 
 // EVENT LISTENERS:
 // Profile-popup button click handler

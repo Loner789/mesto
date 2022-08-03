@@ -30,18 +30,18 @@ const apiConfig = {
   },
 };
 
-// Profile-popup selectors
+// Profile-popup variables
 const profilePopup = document.querySelector("#edit_profile_popup");
 const profileFormElement = document.querySelector("#edit_profile_form");
 const profileButton = document.querySelector(".profile__edit-button");
 const nameInput = profilePopup.querySelector("#profile-name");
 const jobInput = profilePopup.querySelector("#profile-job");
 
-// Card-popup selectors
+// Card-popup variables
 const cardFormElement = document.querySelector("#add_card_form");
 const cardButton = document.querySelector(".profile__add-button");
 
-// Avatar-popup selectors
+// Avatar-popup variables
 const avatarFormElement = document.querySelector("#edit_avatar_form");
 const avatarButton = document.querySelector(".profile__img-wrapper");
 

@@ -2,7 +2,7 @@ export default class UserInfo {
   constructor({ userName, userInfo, userAvatar }) {
     this._userName = document.querySelector(userName);
     this._userInfo = document.querySelector(userInfo);
-    this._userAvatar = document.querySelector(userAvatar)
+    this._userAvatar = document.querySelector(userAvatar);
   }
 
   setUserAvatar(data) {

@@ -66,8 +66,7 @@ export default class Card {
   }
 
   setLikesCount(item) {
-    this._element.querySelector(".place__likes-counter").textContent =
-      item;
+    this._element.querySelector(".place__likes-counter").textContent = item;
   }
 
   generateCard() {
