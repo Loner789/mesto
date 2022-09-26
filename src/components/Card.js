@@ -75,8 +75,7 @@ export default class Card {
     this._cardImage = this._element.querySelector(".place__image");
 
     this._cardCaption.textContent = this._name;
-    this._cardImage.alt = `Фото ${this._name}.`;
-    this._cardImage.src = this._link;
+    this._cardImage.style.backgroundImage = `url(${this._link})`;
 
     this._setEventListeners();
 
